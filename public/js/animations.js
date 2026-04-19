@@ -255,9 +255,19 @@ function initCustomCursor() {
 function initSkillBars() {
     const skillBars = document.querySelectorAll('.skill-level');
     
-    // Set initial width to 0
-    skillBars.forEach(bar => {
+    console.log('Found skill bars:', skillBars.length);
+    
+    // Force initial width to 0% with inline styles
+    skillBars.forEach((bar, index) => {
+        const level = bar.getAttribute('data-level');
+        console.log(`Skill bar ${index}: ${level}%`);
+        
+        // Force inline styles to override any CSS
+        bar.setAttribute('style', 'width: 0% !important; transition: width 1.5s ease-out;');
+        
+        // Also set via style property for redundancy
         bar.style.width = '0%';
+        bar.style.transition = 'width 1.5s ease-out';
     });
     
     // Create intersection observer for skill bars
@@ -267,10 +277,12 @@ function initSkillBars() {
                 const skillLevel = entry.target;
                 const level = skillLevel.getAttribute('data-level');
                 
-                // Animate skill bar
+                console.log('Animating skill bar to:', level + '%');
+                
+                // Animate skill bar with inline styles
                 setTimeout(() => {
-                    skillLevel.style.transition = 'width 1.5s ease-out';
                     skillLevel.style.width = level + '%';
+                    skillLevel.setAttribute('style', `width: ${level}% !important; transition: width 1.5s ease-out;`);
                 }, 200);
                 
                 // Stop observing after animation
