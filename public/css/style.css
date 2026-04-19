@@ -504,16 +504,6 @@ a:hover {
   transition: width 1.5s ease-out;
 }
 
-.skill-percentage {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-left: 0.5rem;
-  min-width: 35px;
-  text-align: right;
-  display: inline-block;
-}
-
 /* Projects Section */
 .projects-grid {
   display: grid;

@@ -305,32 +305,15 @@ function animateSkillBar(element, targetLevel) {
     const increment = targetLevel / 50; // Divide animation into 50 steps
     const interval = 30; // 30ms per step for smooth animation
     
-    // Create percentage label
-    const skillItem = element.closest('.skill-item');
-    const skillName = skillItem.querySelector('.skill-name');
-    
-    // Add percentage display to skill name
-    const originalText = skillName.textContent;
-    skillName.innerHTML = `${originalText} <span class="skill-percentage" style="opacity: 0; transition: opacity 0.3s;">0%</span>`;
-    const percentageSpan = skillName.querySelector('.skill-percentage');
-    
     // Set transition for smooth animation
     element.style.transition = 'width 30ms linear';
     
     const animation = setInterval(() => {
         currentLevel += increment;
-        const displayLevel = Math.round(currentLevel);
-        
-        // Update percentage display
-        percentageSpan.textContent = displayLevel + '%';
-        percentageSpan.style.opacity = '1';
         
         if (currentLevel >= targetLevel) {
             currentLevel = targetLevel; // Ensure we don't exceed target
             clearInterval(animation);
-            
-            // Final update
-            percentageSpan.textContent = targetLevel + '%';
             
             // Add a subtle pulse effect when reaching target
             element.style.transition = 'width 0.3s ease-out';
@@ -338,10 +321,6 @@ function animateSkillBar(element, targetLevel) {
             
             setTimeout(() => {
                 element.style.width = currentLevel + '%';
-                // Fade out percentage after a moment
-                setTimeout(() => {
-                    percentageSpan.style.opacity = '0.6';
-                }, 1000);
             }, 150);
         } else {
             element.style.width = currentLevel + '%';
