@@ -30,12 +30,14 @@ const createTransporter = () => {
 };
 
 // POST /contact - Send email
-router.post('/', contactLimiter, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
+        console.log('Contact request received:', req.body);
         const { name, email, subject, message } = req.body;
 
         // Validate required fields
         if (!name || !email || !subject || !message) {
+            console.log('Missing fields validation failed');
             return res.status(400).json({
                 success: false,
                 message: 'All fields are required.'
@@ -44,6 +46,7 @@ router.post('/', contactLimiter, async (req, res) => {
 
         // Validate email format
         if (!validator.isEmail(email)) {
+            console.log('Email validation failed:', email);
             return res.status(400).json({
                 success: false,
                 message: 'Please provide a valid email address.'
@@ -65,10 +68,13 @@ router.post('/', contactLimiter, async (req, res) => {
         const sanitizedMessage = validator.escape(message.trim());
 
         // Create transporter
+        console.log('Creating email transporter...');
         const transporter = createTransporter();
 
         // Verify transporter configuration
+        console.log('Verifying email configuration...');
         await transporter.verify();
+        console.log('Email configuration verified successfully');
 
         // Email options
         const mailOptions = {
