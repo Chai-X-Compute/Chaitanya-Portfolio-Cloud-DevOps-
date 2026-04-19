@@ -560,63 +560,6 @@ a:hover {
   opacity: 1 !important;
 }
 
-.skill-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-md);
-  display: inline-block;
-  transition: all var(--transition-normal);
-}
-
-/* Skill level label colors */
-.skill-label[data-level^="9"],
-.skill-label[data-level="100"] {
-  background: linear-gradient(135deg, var(--success-color), #16a34a);
-  color: white;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-}
-
-.skill-label[data-level^="8"] {
-  background: linear-gradient(135deg, var(--success-color), #16a34a);
-  color: white;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-}
-
-.skill-label[data-level^="7"] {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
-  color: white;
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
-}
-
-.skill-label[data-level^="6"] {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
-  color: white;
-  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
-}
-
-.skill-label[data-level^="5"] {
-  background: linear-gradient(135deg, var(--warning-color), #d97706);
-  color: white;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-}
-
-.skill-label[data-level^="4"] {
-  background: linear-gradient(135deg, var(--warning-color), #d97706);
-  color: white;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-}
-
-.skill-label[data-level^="3"],
-.skill-label[data-level^="2"],
-.skill-label[data-level^="1"],
-.skill-label[data-level^="0"] {
-  background: linear-gradient(135deg, var(--error-color), #dc2626);
-  color: white;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-}
 
 /* Responsive Skills Section */
 @media (max-width: 1024px) {
@@ -644,11 +587,6 @@ a:hover {
   
   .skill-bar {
     height: 10px;
-  }
-  
-  .skill-label {
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
   }
 }
 
@@ -691,11 +629,6 @@ a:hover {
   .skill-bar {
     height: 8px;
   }
-  
-  .skill-label {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -726,11 +659,6 @@ a:hover {
   
   .skill-bar {
     height: 6px;
-  }
-  
-  .skill-label {
-    font-size: 0.65rem;
-    padding: 0.1rem 0.4rem;
   }
 }
 

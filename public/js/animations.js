@@ -248,19 +248,18 @@ function initCustomCursor() {
     });
 }
 
-// Premium Skills Animation System
+// Clean Skills Animation System - Progressive Fill Only
 function initSkillBars() {
     const skillCategories = document.querySelectorAll('.skill-category');
     
-    // Initialize all skill bars with premium styling
+    // Initialize all skill bars with blue gradient
     const allSkillBars = document.querySelectorAll('.skill-level');
-    const allSkillLabels = document.querySelectorAll('.skill-label');
     
-    // Set initial state - bars at 0%, labels hidden
+    // Set initial state - bars at 0%
     allSkillBars.forEach((bar) => {
         const level = bar.getAttribute('data-level');
         
-        // Force initial state
+        // Force initial state with blue gradient
         bar.style.width = '0%';
         bar.style.transition = 'none';
         bar.style.position = 'absolute';
@@ -276,32 +275,23 @@ function initSkillBars() {
         bar.style.borderRadius = '50px';
     });
     
-    // Hide labels initially
-    allSkillLabels.forEach((label) => {
-        label.style.opacity = '0';
-        label.style.transform = 'translateY(10px)';
-        label.style.transition = 'all 0.5s ease-out';
-    });
-    
-    // Create intersection observer for premium animation
+    // Create intersection observer for animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const category = entry.target;
                 const skillBars = category.querySelectorAll('.skill-level');
-                const skillLabels = category.querySelectorAll('.skill-label');
                 const categoryIndex = Array.from(skillCategories).indexOf(category);
                 
-                // Animate each skill bar with premium staggered timing
+                // Animate each skill bar with staggered timing
                 skillBars.forEach((skillBar, barIndex) => {
                     const level = parseInt(skillBar.getAttribute('data-level'));
-                    const label = skillLabels[barIndex];
                     
-                    // Premium timing: category delay + individual skill delay
+                    // Timing: category delay + individual skill delay
                     const delay = 300 + (categoryIndex * 400) + (barIndex * 150);
                     
                     setTimeout(() => {
-                        animatePremiumSkillBar(skillBar, level, label);
+                        animateSkillBar(skillBar, level);
                     }, delay);
                 });
                 
@@ -310,7 +300,7 @@ function initSkillBars() {
             }
         });
     }, {
-        threshold: 0.3, // Trigger when 30% visible for earlier start
+        threshold: 0.3, // Trigger when 30% visible
         rootMargin: '0px 0px -100px 0px' // Start slightly earlier
     });
     
@@ -320,20 +310,19 @@ function initSkillBars() {
     });
 }
 
-// Premium skill bar animation with label reveal
-function animatePremiumSkillBar(element, targetLevel, labelElement) {
+// Progressive skill bar animation - blue gradient fill only
+function animateSkillBar(element, targetLevel) {
     let currentLevel = 0;
     const duration = 2000; // 2 seconds for smooth animation
     const steps = 60; // 60 steps for smooth 60fps animation
     const increment = targetLevel / steps;
     const interval = duration / steps;
     
-    // Set smooth transition
-    element.style.transition = `width ${interval}ms ease-out`;
+    // Ensure blue gradient is applied
     element.style.background = 'linear-gradient(90deg, #38bdf8, #0ea5e9, #0284c7)';
     element.style.boxShadow = '0 0 25px rgba(56, 189, 248, 0.8)';
     
-    // Animate the bar
+    // Animate the bar progressively
     const animation = setInterval(() => {
         currentLevel += increment;
         
@@ -348,25 +337,11 @@ function animatePremiumSkillBar(element, targetLevel, labelElement) {
             setTimeout(() => {
                 element.style.width = targetLevel + '%';
                 element.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.6)';
-                
-                // Reveal label with animation
-                if (labelElement) {
-                    labelElement.style.opacity = '1';
-                    labelElement.style.transform = 'translateY(0)';
-                    
-                    // Add pulse effect to label
-                    setTimeout(() => {
-                        labelElement.style.transform = 'scale(1.05)';
-                        setTimeout(() => {
-                            labelElement.style.transform = 'scale(1)';
-                        }, 200);
-                    }, 300);
-                }
             }, 200);
         } else {
             element.style.width = currentLevel + '%';
             
-            // Progressive glow effect
+            // Progressive glow effect as bar fills
             const glowIntensity = (currentLevel / targetLevel) * 0.8;
             element.style.boxShadow = `0 0 ${15 + glowIntensity * 15}px rgba(56, 189, 248, ${0.4 + glowIntensity * 0.4})`;
         }
