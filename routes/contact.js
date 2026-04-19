@@ -53,6 +53,7 @@ router.post('/', async (req, res) => {
         console.log('Environment check:');
         console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'SET' : 'NOT SET');
         console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'SET' : 'NOT SET');
+        console.log('NODE_ENV:', process.env.NODE_ENV);
         
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
             console.error('Email credentials not configured!');
