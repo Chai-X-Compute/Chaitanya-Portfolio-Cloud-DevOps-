@@ -49,6 +49,12 @@ app.get('*', (req, res) => {
 app.use((err, req, res, next) => {
     console.error('=== SERVER ERROR ===');
     console.error('Error:', err);
+    console.error('Error message:', err.message);
+    console.error('Error stack:', err.stack);
+    console.error('Request URL:', req.url);
+    console.error('Request method:', req.method);
+    console.error('Request body:', req.body);
+    
     res.status(500).json({
         success: false,
         message: 'Internal server error',
@@ -64,14 +70,11 @@ app.use((req, res) => {
     });
 });
 
-// Export for Vercel
-module.exports = app;
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`Static files served from: /public`);
+});
 
-// Start server for local development
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-        console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-        console.log('Static files served from: /public');
-    });
-}
+module.exports = app;
