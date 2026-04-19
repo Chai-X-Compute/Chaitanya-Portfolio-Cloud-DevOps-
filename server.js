@@ -47,10 +47,18 @@ app.get('*', (req, res) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
+    console.error('=== SERVER ERROR ===');
     console.error('Error:', err);
+    console.error('Error message:', err.message);
+    console.error('Error stack:', err.stack);
+    console.error('Request URL:', req.url);
+    console.error('Request method:', req.method);
+    console.error('Request body:', req.body);
+    
     res.status(500).json({
         success: false,
-        message: 'Internal server error'
+        message: 'Internal server error',
+        error: process.env.NODE_ENV === 'development' ? err.message : 'Server error'
     });
 });
 

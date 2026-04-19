@@ -1,27 +1,24 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const rateLimit = require('express-rate-limit');
 const validator = require('validator');
 
 const router = express.Router();
 
-// Rate limiting
-const contactLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // limit each IP to 5 requests per windowMs
-    message: {
-        success: false,
-        message: 'Too many contact requests. Please try again later.'
-    },
-    standardHeaders: true,
-    legacyHeaders: false,
-    skipSuccessfulRequests: false,
-});
-
-// Create Nodemailer transporter
+// Create Nodemailer transporter with proper configuration
 const createTransporter = () => {
+    console.log('Creating transporter with config:', {
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER ? process.env.EMAIL_USER.substring(0, 10) + '***' : 'NOT SET',
+            pass: process.env.EMAIL_PASS ? '***SET***' : 'NOT SET'
+        }
+    });
+
     return nodemailer.createTransporter({
         service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS
@@ -31,13 +28,26 @@ const createTransporter = () => {
 
 // POST /contact - Send email
 router.post('/', async (req, res) => {
+    console.log('=== CONTACT REQUEST START ===');
+    console.log('Request body:', req.body);
+    console.log('Request headers:', req.headers);
+    
     try {
-        console.log('Contact request received:', req.body);
+        // Check if body exists
+        if (!req.body || Object.keys(req.body).length === 0) {
+            console.error('Request body is empty');
+            return res.status(400).json({
+                success: false,
+                message: 'Request body is empty.'
+            });
+        }
+
         const { name, email, subject, message } = req.body;
+        console.log('Extracted data:', { name, email, subject, message: message ? message.substring(0, 50) + '...' : 'EMPTY' });
 
         // Validate required fields
         if (!name || !email || !subject || !message) {
-            console.log('Missing fields validation failed');
+            console.error('Missing fields validation failed');
             return res.status(400).json({
                 success: false,
                 message: 'All fields are required.'
@@ -46,7 +56,7 @@ router.post('/', async (req, res) => {
 
         // Validate email format
         if (!validator.isEmail(email)) {
-            console.log('Email validation failed:', email);
+            console.error('Email validation failed:', email);
             return res.status(400).json({
                 success: false,
                 message: 'Please provide a valid email address.'
@@ -55,9 +65,24 @@ router.post('/', async (req, res) => {
 
         // Validate message length
         if (message.length < 10) {
+            console.error('Message too short:', message.length);
             return res.status(400).json({
                 success: false,
                 message: 'Message must be at least 10 characters long.'
+            });
+        }
+
+        // Check environment variables
+        console.log('Environment check:');
+        console.log('EMAIL_USER set:', !!process.env.EMAIL_USER);
+        console.log('EMAIL_PASS set:', !!process.env.EMAIL_PASS);
+        console.log('NODE_ENV:', process.env.NODE_ENV);
+        
+        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+            console.error('Email credentials not properly configured!');
+            return res.status(500).json({
+                success: false,
+                message: 'Server configuration error. Email credentials missing.'
             });
         }
 
@@ -67,14 +92,21 @@ router.post('/', async (req, res) => {
         const sanitizedSubject = validator.escape(subject.trim());
         const sanitizedMessage = validator.escape(message.trim());
 
-        // Create transporter
         console.log('Creating email transporter...');
         const transporter = createTransporter();
 
         // Verify transporter configuration
         console.log('Verifying email configuration...');
-        await transporter.verify();
-        console.log('Email configuration verified successfully');
+        try {
+            await transporter.verify();
+            console.log('Email configuration verified successfully');
+        } catch (verifyError) {
+            console.error('Email verification failed:', verifyError);
+            return res.status(500).json({
+                success: false,
+                message: 'Email configuration verification failed.'
+            });
+        }
 
         // Email options
         const mailOptions = {
@@ -131,9 +163,8 @@ router.post('/', async (req, res) => {
             `
         };
 
-        // Send email
+        console.log('Sending email...');
         const info = await transporter.sendMail(mailOptions);
-
         console.log('Email sent successfully:', info.messageId);
 
         res.json({
@@ -142,17 +173,28 @@ router.post('/', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Contact form error:', error);
+        console.error('=== CONTACT FORM ERROR ===');
+        console.error('Error type:', error.constructor.name);
+        console.error('Error message:', error.message);
+        console.error('Error code:', error.code);
+        console.error('Error stack:', error.stack);
         
         let errorMessage = 'Failed to send message. Please try again later.';
+        let statusCode = 500;
         
         if (error.code === 'EAUTH') {
-            errorMessage = 'Email authentication failed. Please check server configuration.';
+            errorMessage = 'Email authentication failed. Please check Gmail app password.';
+            statusCode = 500;
         } else if (error.code === 'ECONNECTION') {
-            errorMessage = 'Connection failed. Please check your internet connection.';
+            errorMessage = 'Connection failed. Please check internet connection.';
+            statusCode = 500;
+        } else if (error.code === 'EENVELOPE') {
+            errorMessage = 'Invalid email address configuration.';
+            statusCode = 500;
         }
 
-        res.status(500).json({
+        console.log('Sending error response:', { success: false, message: errorMessage });
+        res.status(statusCode).json({
             success: false,
             message: errorMessage
         });
