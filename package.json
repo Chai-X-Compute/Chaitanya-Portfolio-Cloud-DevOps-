@@ -1,13 +1,13 @@
 {
-  "name": "chaitanya-portfolio",
+  "name": "portfolio-backend",
   "version": "1.0.0",
-  "description": "Professional portfolio website of Chaitanya Gote - Cloud & DevOps Engineer",
-  "main": "index.html",
+  "description": "Backend server for portfolio contact form",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "echo 'Static build complete'",
-    "deploy": "vercel --prod"
+    "debug-email": "node debug-email.js",
+    "test": "npm run debug-email"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,15 +22,9 @@
   },
   "keywords": [
     "portfolio",
-    "web-development",
-    "cloud",
-    "devops",
-    "frontend",
-    "full-stack"
+    "contact-form",
+    "nodemailer"
   ],
   "author": "Chaitanya Gote",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.0.0"
-  }
+  "license": "MIT"
 }

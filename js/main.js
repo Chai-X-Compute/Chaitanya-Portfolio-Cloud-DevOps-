@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 window.location.protocol === 'file:';
                 
                 // Assuming backend runs on port 3001 locally as per your .env
-                const endpoint = isLocal ? 'http://localhost:3001/send' : '/api/send';
+                const endpoint = isLocal ? 'http://localhost:3001/send' : '/send';
 
                 // Send to backend
                 const response = await fetch(endpoint, {
