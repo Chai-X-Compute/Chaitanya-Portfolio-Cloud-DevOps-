@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Validated understanding of containerization concepts, Docker architecture, image management, container orchestration basics, and best practices for building and deploying containerized applications.',
             file: 'certifications/Docker Certified Associate/Docker Certified Associate (DCA) Specialization Certificate - LearnKartS - Coursera.pdf',
             certificateUrl: 'https://coursera.org/share/e9ed0492f002c3c4e27fe12814893652',
-            thumbnail: 'images/certifications/Docker Certified Associate/Screenshot 2026-01-28 015353.png',
+            thumbnail: 'images/Certifications/Docker Certified Associate/Screenshot 2026-01-28 015353.png',
             previewImage: true,
             images: [
-                { src: 'images/certifications/Docker Certified Associate/Screenshot 2026-01-28 015353.png', alt: 'Docker Certified Associate Certificate' }
+                { src: 'images/Certifications/Docker Certified Associate/Screenshot 2026-01-28 015353.png', alt: 'Docker Certified Associate Certificate' }
             ]
         },
         {
@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Developed practical skills in Linux system administration, shell scripting, process management, networking, and security fundamentals essential for cloud and DevOps environments.',
             file: 'certifications/Linux for Cloud & DevOps Engineers/Coursera _ Certificate _ Linux for Cloud and DevOps Engineers.pdf',
             certificateUrl: 'https://coursera.org/share/40498e0d121f1209a0d6068e9b71397e',
-            thumbnail: 'images/certifications/Linux for Cloud and DevOps Engineers/Screenshot 2026-01-28 015307.png',
+            thumbnail: 'images/Certifications/Linux for Cloud and DevOps Engineers/Screenshot 2026-01-28 015307.png',
             previewImage: true,
             images: [
-                { src: 'images/certifications/Linux for Cloud and DevOps Engineers/Screenshot 2026-01-28 015307.png', alt: 'Linux for Cloud & DevOps Certificate' }
+                { src: 'images/Certifications/Linux for Cloud and DevOps Engineers/Screenshot 2026-01-28 015307.png', alt: 'Linux for Cloud & DevOps Certificate' }
             ]
         },
         {
@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Gained foundational knowledge of AWS cloud architecture, core services, pricing models, security, and support, with an emphasis on cloud computing best practices.',
             file: 'certifications/AWS Academy Cloud Foundations/Exam Prep - AWS Certified Cloud Practitioner Foundations/Coursera_Certificate_Exam Prep-AWS Certified Cloud Practitioner Foundations.pdf',
             certificateUrl: 'https://coursera.org/share/54f75794d4f42fa8491e5d206a0344de',
-            thumbnail: 'images/certifications/AWS Academy Cloud Foundations/Exam Prep - AWS Certified Cloud Practitioner Foundations/Screenshot 2026-01-28 015627.png',
+            thumbnail: 'images/Certifications/AWS Academy Cloud Foundations/Exam Prep - AWS Certified Cloud Practitioner Foundations/Screenshot 2026-01-28 015627.png',
             previewImage: true,
             images: [
-                { src: 'images/certifications/AWS Academy Cloud Foundations/Exam Prep - AWS Certified Cloud Practitioner Foundations/Screenshot 2026-01-28 015627.png', alt: 'AWS Cloud Practitioner Certificate' },
-                { src: 'images/certifications/AWS Academy Cloud Foundations/AWS Academy Graduate - Cloud Foundations - Training Badge/Screenshot 2026-01-28 015207.png', alt: 'AWS Academy Graduate Badge' }
+                { src: 'images/Certifications/AWS Academy Cloud Foundations/Exam Prep - AWS Certified Cloud Practitioner Foundations/Screenshot 2026-01-28 015627.png', alt: 'AWS Cloud Practitioner Certificate' },
+                { src: 'images/Certifications/AWS Academy Cloud Foundations/AWS Academy Graduate - Cloud Foundations - Training Badge/Screenshot 2026-01-28 015207.png', alt: 'AWS Academy Graduate Badge' }
             ]
         },
         {
@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Learned CI/CD principles, Git-based version control, build and release pipelines, and automated deployment workflows using Azure DevOps tools.',
             file: 'certifications/Azure DevOps & Continuous Delivery with Git/Coursera - Azure DevOps and Continuous Delivery with Git.pdf',
             certificateUrl: 'https://coursera.org/share/4a4bd9e858edc6ef5586477155233f45',
-            thumbnail: 'images/certifications/Azure DevOps and Continuous Delivery with Git/Screenshot 2026-01-28 015246.png',
+            thumbnail: 'images/Certifications/Azure DevOps and Continuous Delivery with Git/Screenshot 2026-01-28 015246.png',
             previewImage: true,
             images: [
-                { src: 'images/certifications/Azure DevOps and Continuous Delivery with Git/Screenshot 2026-01-28 015246.png', alt: 'Azure DevOps Certificate' }
+                { src: 'images/Certifications/Azure DevOps and Continuous Delivery with Git/Screenshot 2026-01-28 015246.png', alt: 'Azure DevOps Certificate' }
             ]
         },
         {
@@ -69,10 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
             description: 'Acquired an understanding of Google Cloud\'s core infrastructure, including compute, storage, networking, identity, and resource management in cloud environments.',
             file: 'certifications/Google Cloud Fundamentals - Core Infrastructure/Coursera_Google Cloud Fundamentals - Core Infrastructure.pdf',
             certificateUrl: 'https://coursera.org/share/11cbee14ef4c5b2e19f6509d1cdabbf1',
-            thumbnail: 'images/certifications/Google Cloud Fundamentals - Core Infrastructure/Screenshot 2026-01-28 015330.png',
+            thumbnail: 'images/Certifications/Google Cloud Fundamentals - Core Infrastructure/Screenshot 2026-01-28 015330.png',
             previewImage: true,
             images: [
-                { src: 'images/certifications/Google Cloud Fundamentals - Core Infrastructure/Screenshot 2026-01-28 015330.png', alt: 'Google Cloud Fundamentals Certificate' }
+                { src: 'images/Certifications/Google Cloud Fundamentals - Core Infrastructure/Screenshot 2026-01-28 015330.png', alt: 'Google Cloud Fundamentals Certificate' }
             ]
         }
     ];
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.innerHTML = `
                 <div class="certification-image">
                     <img src="${cert.thumbnail}" alt="${cert.title}" class="cert-thumbnail" 
-                         onerror="this.onerror=null; this.src='images/certifications/default-cert.png'; console.log('Image failed to load:', '${cert.thumbnail}');">
+                         onerror="this.onerror=null; this.src='images/Certifications/default-cert.png'; console.log('Image failed to load:', '${cert.thumbnail}');">
                 </div>
                 <div class="certification-preview">
                     <h3>${cert.title}</h3>
