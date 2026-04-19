@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaitanya Gote – Professional Developer Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230b1120'/><text y='50%' x='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='50' font-weight='bold' fill='%2338bdf8'>CG</text></svg>">
+    <meta name="description" content="Portfolio of Chaitanya Gote - Frontend Developer, Web Developer, and Cloud Computing Student">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/certifications.css">
+    <link rel="stylesheet" href="css/project-details.css">
+    <link rel="stylesheet" href="css/project-modal.css">
+    <link rel="stylesheet" href="css/certifications-modal.css">
+    <link rel="stylesheet" href="css/resume.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">CG</a>
+            <button class="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Chaitanya Gote</h1>
+                <h2 class="hero-subtitle">Frontend • Web • Cloud • DevOps Enthusiast</h2>
+                <div class="hero-roles">
+                    <span>Frontend Developer</span>
+                    <span>Web Developer</span>
+                    <span>Cloud Computing Student</span>
+                    <span>DevOps Learner</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="resume/Chaitanya_Gote_Resume.pdf" class="btn btn-primary" target="_blank">
+                        View Resume
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am a Computer Science & Engineering (Cloud Computing) undergraduate at MIT ADT University, Pune, with a consistently strong academic record (CGPA 8+). I have hands-on experience in frontend and web development, along with practical exposure to cloud computing and DevOps fundamentals.</p>
+                    
+                    <p>I build responsive, performance-optimized web applications using HTML, CSS, JavaScript, and Python, and develop backend systems with Flask and MySQL. My work focuses on clean code, scalability, security, and user-centric design, ensuring applications are both efficient and maintainable.</p>
+                    
+                    <p>I have worked with AWS and Google Cloud and am familiar with Linux, Docker, Git, and GitHub, giving me a strong understanding of deployment workflows and cloud-based application architecture. I am focused on opportunities in Frontend Development, Web Development, Cloud Computing, and DevOps, where I can contribute to building scalable, impactful software solutions while continuing to grow as an engineer.</p>
+                    
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="education-item">
+                            <h4>B.Tech – Computer Science & Engineering (Cloud Computing)</h4>
+                            <p class="institution">MIT ADT University, Pune</p>
+                            <p class="details">2023 – 2027 | 8+ CGPA (Consistently)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-alt">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skill-category">
+                    <h3>Cloud</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">AWS (EC2, S3, RDS, IAM, VPC, CloudWatch)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Google Cloud Platform</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Firebase (Auth, Hosting, Firestore)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>DevOps</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Kubernetes (basic)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="60"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Terraform (IaC - basic)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="65"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CI/CD Pipelines</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">GitHub Actions</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Linux / Ubuntu</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">MySQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">SQLite</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">PostgreSQL (Cloud SQL)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AWS RDS</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">SQLAlchemy ORM</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Flask</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Django (basic)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="65"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">REST APIs</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">WebSockets</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js (basic)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="60"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">HTML5</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CSS3</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Tailwind CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Bootstrap</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Responsive Web Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data & BI</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Power BI</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Tableau</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">R (basic)</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="60"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Microsoft Excel</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Chart.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">GitHub</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">VS Code</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Postman</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Canva</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Figma</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" data-level="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: KrushiMitra -->
+                <div class="project-card" data-project="project1">
+                    <div class="project-image">
+                        <div class="image-grid three-columns">
+                            <div class="grid-item">
+                                <img src="images/project1/System Homepage - Dashboard.png" alt="KrushiMitra - System Homepage Dashboard">
+                                <div class="caption">System Homepage - Dashboard</div>
+                            </div>
+                            <div class="grid-item">
+                                <img src="images/project1/Community Forum Interface.png" alt="KrushiMitra - Community Forum Interface">
+                                <div class="caption">Community Forum Interface</div>
+                            </div>
+                            <div class="grid-item">
+                                <img src="images/project1/E-commerce Product Catalog.png" alt="KrushiMitra - E-commerce Product Catalog">
+                                <div class="caption">E-commerce Product Catalog</div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-gallery" data-gallery="project1">
+                            <img src="images/project1/System Homepage - Dashboard.png" alt="KrushiMitra - System Homepage Dashboard" class="active">
+                            <img src="images/project1/Community Forum Interface.png" alt="KrushiMitra - Community Forum Interface">
+                            <img src="images/project1/E-commerce Product Catalog.png" alt="KrushiMitra - E-commerce Product Catalog">
+                            <img src="images/project1/Equipment Listing Interface.png" alt="KrushiMitra - Equipment Listing Interface">
+                            <img src="images/project1/Equipment Uploading Interface.png" alt="KrushiMitra - Equipment Uploading Interface">
+                            <img src="images/project1/Language Translation Feature.png" alt="KrushiMitra - Language Translation Feature">
+                        </div>
+                        <button class="view-all-btn">
+                            <i class="fas fa-images"></i>
+                            <span>View All Images</span>
+                        </button>
+                    </div>
+                    <div class="project-content">
+                        <h3>KrushiMitra – Farming Resource Platform</h3>
+                        <p>Comprehensive cloud-based platform connecting farmers with resources, marketplace, and community features for agricultural communities.</p>
+                        <div class="project-tech">
+                            <span>Flask</span>
+                            <span>Tailwind CSS</span>
+                            <span>AWS RDS</span>
+                            <span>Firebase Auth</span>
+                            <span>Razorpay</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Chai-X-Compute/KrushiMitra_v1" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: File Storage -->
+                <div class="project-card" data-project="project2">
+                    <div class="project-image">
+                        <div class="image-grid two-columns">
+                            <div class="grid-item">
+                                <img src="images/project2/Screenshot 2026-01-26 024111.png" alt="File Storage Project - User Dashboard">
+                                <div class="caption">User Dashboard</div>
+                            </div>
+                            <div class="grid-item">
+                                <img src="images/project2/Screenshot 2026-01-26 024049.png" alt="File Storage Project - File Management">
+                                <div class="caption">File Management</div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-gallery" data-gallery="project2">
+                            <img src="images/project2/Screenshot 2026-01-26 024111.png" alt="File Storage Project - User Dashboard" class="active">
+                            <img src="images/project2/Screenshot 2026-01-26 024049.png" alt="File Storage Project - File Management">
+                            <img src="images/project2/Screenshot 2026-01-26 024155.png" alt="File Storage Project - Upload Interface">
+                        </div>
+                        <button class="view-all-btn">
+                            <i class="fas fa-images"></i>
+                            <span>View All Images</span>
+                        </button>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cloud-Based File Storage System</h3>
+                        <p>Secure authentication-based file upload and management system with user-friendly interface.</p>
+                        <div class="project-tech">
+                            <span>Flask</span>
+                            <span>SQLAlchemy</span>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: QuickWeather -->
+                <div class="project-card" data-project="project3">
+                    <div class="project-image">
+                        <div class="image-grid">
+                            <div class="grid-item">
+                                <img src="images/project3/Screenshot 2026-01-26 024852.png" alt="QuickWeather App - Main View">
+                                <div class="caption">Current Weather</div>
+                            </div>
+                            <div class="grid-item">
+                                <img src="images/project3/Screenshot 2026-01-26 024913.png" alt="QuickWeather App - Forecast">
+                                <div class="caption">Weather Forecast</div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-gallery" data-gallery="project3">
+                            <img src="images/project3/Screenshot 2026-01-26 024852.png" alt="QuickWeather App - Main View" class="active">
+                            <img src="images/project3/Screenshot 2026-01-26 024913.png" alt="QuickWeather App - Forecast">
+                        </div>
+                        <button class="view-all-btn">
+                            <i class="fas fa-images"></i>
+                            <span>View All Images</span>
+                        </button>
+                    </div>
+                    <div class="project-content">
+                        <h3>QuickWeather Web App</h3>
+                        <p>Real-time weather dashboard with 5-day forecast and dark/light mode.</p>
+                        <div class="project-tech">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>OpenWeather API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://chai-x-compute.github.io/QuickWeather_Web_App/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Event Management System -->
+                <div class="project-card" data-project="project4">
+                    <div class="project-image">
+                        <div class="image-grid two-columns">
+                            <div class="grid-item">
+                                <img src="images/project4/Event Management Dashboard.png" alt="Event Management System - Admin Dashboard">
+                                <div class="caption">Admin Dashboard</div>
+                            </div>
+                            <div class="grid-item">
+                                <img src="images/project4/Event creation.png" alt="Event Management System - Attendee Registration">
+                                <div class="caption">Attendee Registration</div>
+                            </div>
+                        </div>
+                        <div class="thumbnail-gallery" data-gallery="project4">
+                            <img src="images/project4/Event Management Dashboard.png" alt="Event Management System - Admin Dashboard" class="active">
+                            <img src="images/project4/Event Admin Dashboard.png" alt="Event Management System - Admin Dashboard">
+                            <img src="images/project4/Event creation.png" alt="Event Management System - Event Creation">
+                            <img src="images/project4/Event Listing.png" alt="Event Management System - Event Listing">
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Event Management System</h3>
+                        <p>Built a responsive event management web app with event creation, attendee registration, and an admin dashboard supporting 4+ event categories and participant tracking.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Chai-X-Compute/event-management-system" target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certifications-list">
+                <!-- Certifications will be dynamically added here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section">
+        <div class="container">
+            <h2 class="section-title">My Resume</h2>
+            
+            <div class="resume-container">
+                <!-- Header -->
+                <div class="resume-header">
+                    <h1>CHAITANYA GOTE</h1>
+                    <p class="tagline">Cloud & DevOps Engineer | Full-Stack Web Developer</p>
+                    <div class="contact-info">
+                        <span><i class="fas fa-map-marker-alt"></i> Pune, Maharashtra</span>
+                        <span><i class="fas fa-phone"></i> +91 7498540813</span>
+                        <span><i class="fas fa-envelope"></i> chaitanyagote5006@gmail.com</span>
+                        <span><i class="fab fa-github"></i> GitHub: Chai-X-Compute</span>
+                        <span><i class="fas fa-globe"></i> Portfolio: Chaitanya-Portfolio</span>
+                        <span><i class="fab fa-linkedin"></i> LinkedIn: chaitanya-gote</span>
+                    </div>
+                </div>
+
+                <!-- Career Objective -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-bullseye"></i> CAREER OBJECTIVE</h3>
+                    <p>Motivated B.Tech Computer Science & Engineering (Cloud Computing) student with a consistent CGPA of 8.46 and hands-on experience in AWS, GCP, Docker, Kubernetes, Terraform, Linux, and full-stack web development. Passionate about building scalable, cloud-native infrastructure and automating DevOps workflows. Seeking to contribute to impactful, production-grade projects as a Cloud & DevOps Intern.</p>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-code"></i> TECHNICAL SKILLS</h3>
+                    <div class="skills-list">
+                        <div class="skill-category">
+                            <h4>Cloud</h4>
+                            <ul>
+                                <li>AWS (EC2, S3, RDS, IAM, VPC, CloudWatch)</li>
+                                <li>Google Cloud Platform</li>
+                                <li>Firebase (Auth, Hosting, Firestore)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>DevOps</h4>
+                            <ul>
+                                <li>Docker</li>
+                                <li>Kubernetes (basic)</li>
+                                <li>Terraform (IaC - basic)</li>
+                                <li>CI/CD Pipelines</li>
+                                <li>GitHub Actions</li>
+                                <li>Linux / Ubuntu</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Databases</h4>
+                            <ul>
+                                <li>MySQL</li>
+                                <li>SQLite</li>
+                                <li>PostgreSQL (Cloud SQL)</li>
+                                <li>AWS RDS</li>
+                                <li>SQLAlchemy ORM</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Backend</h4>
+                            <ul>
+                                <li>Python</li>
+                                <li>Flask</li>
+                                <li>Django (basic)</li>
+                                <li>REST APIs</li>
+                                <li>WebSockets</li>
+                                <li>Node.js (basic)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Frontend</h4>
+                            <ul>
+                                <li>HTML5</li>
+                                <li>CSS3</li>
+                                <li>JavaScript</li>
+                                <li>Tailwind CSS</li>
+                                <li>Bootstrap</li>
+                                <li>Responsive Web Design</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Data & BI</h4>
+                            <ul>
+                                <li>Power BI</li>
+                                <li>Tableau</li>
+                                <li>R (basic)</li>
+                                <li>Microsoft Excel</li>
+                                <li>Chart.js</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools</h4>
+                            <ul>
+                                <li>Git</li>
+                                <li>GitHub</li>
+                                <li>VS Code</li>
+                                <li>Postman</li>
+                                <li>Canva</li>
+                                <li>Figma</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Projects -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-project-diagram"></i> FEATURED PROJECTS</h3>
+                    
+                    <div class="project-item">
+                        <h4>KrushiMitra - Agricultural Resource Platform</h4>
+                        <p class="tech-stack">Tech Stack: Python Flask | MySQL + SQLAlchemy ORM | AWS RDS | AWS S3 | Firebase Auth | Razorpay API | Tailwind CSS | Vanilla JS</p>
+                        <ul>
+                            <li>Built a full-stack agricultural marketplace deployed on AWS (RDS for database, S3 for file storage), supporting 5+ resource categories with buying, renting, cart, wishlist, and full order lifecycle including cancellation and refund tracking.</li>
+                            <li>Integrated Razorpay payment gateway handling end-to-end transaction flow; implemented Firebase Authentication with Google OAuth and email/password login, protected with CSRF tokens and secure session cookies.</li>
+                            <li>Developed a community forum with post creation, nested comments, and likes; applied Flask-Migrate for version controlled schema updates across 10+ relational tables.</li>
+                        </ul>
+                        <p class="repo-link">Repo: github.com/Chai-X-Compute/KrushiMitra_v1</p>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h4>Cloud-Based Secure File Storage System</h4>
+                        <p class="tech-stack">Tech Stack: Python Flask | SQLAlchemy ORM | Flask-Login | MySQL / SQLite | AWS S3 | Bootstrap | Linux (Ubuntu)</p>
+                        <ul>
+                            <li>Built a full-stack cloud-backed file management app supporting 3+ file types - upload, store, organize, and retrieve files with granular role-based access control.</li>
+                            <li>Integrated AWS S3 as the object storage backend with MySQL for metadata and audit logs; implemented complete auth flow including password reset via email token.</li>
+                            <li>Deployed on Linux (Ubuntu) with environment-based config separation across dev, staging, and production environments, mirroring real DevOps practices.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-item">
+                        <h4>Event Management System</h4>
+                        <p class="tech-stack">Tech Stack: HTML5 | CSS3 | JavaScript</p>
+                        <ul>
+                            <li>Built a responsive event management web app with event creation, attendee registration, and an admin dashboard supporting 4+ event categories and participant tracking.</li>
+                            <li>Implemented live search and filter across all events, dark mode toggle, and mobile-first responsive design for accessibility across all screen sizes.</li>
+                        </ul>
+                        <p class="repo-link">Repo: github.com/Chai-X-Compute/event-management-system</p>
+                    </div>
+                </div>
+
+                <!-- Certifications and Courses -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-certificate"></i> CERTIFICATIONS AND COURSES</h3>
+                    
+                    <div class="cert-category">
+                        <h4>Cloud and Infrastructure</h4>
+                        <ul>
+                            <li>Google Cloud Fundamentals: Core Infrastructure - Google Cloud (Coursera)</li>
+                            <li>AWS Certified Cloud Practitioner Foundations (Exam Prep) - Amazon Web Services (Coursera)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cert-category">
+                        <h4>DevOps, Docker and Linux</h4>
+                        <ul>
+                            <li>Docker Certified Associate Exam Prep Specialization - LearnKartS (Coursera)</li>
+                            <li>Linux for Cloud and DevOps Engineers - Packt (Coursera)</li>
+                            <li>Introduction to DevOps - IBM (Coursera)</li>
+                            <li>Azure DevOps and Continuous Delivery with Git - Packt (Coursera)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cert-category">
+                        <h4>Databases and Data</h4>
+                        <ul>
+                            <li>Exam Prep DP-300: Azure Database Administrator Associate - Whizlabs (Coursera)</li>
+                            <li>Data Visualization with Tableau - Tableau Learning Partner (Coursera)</li>
+                            <li>Data Analysis and Visualization with Power BI - Microsoft (Coursera)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cert-category">
+                        <h4>Programming and Core CS</h4>
+                        <ul>
+                            <li>Design and Analysis of Algorithms (DAA) - NPTEL</li>
+                            <li>Responsive Web Design - freeCodeCamp</li>
+                            <li>Introduction to Git and GitHub - Google (Coursera)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-graduation-cap"></i> EDUCATION</h3>
+                    <div class="education-item">
+                        <h4>B.Tech - Computer Science and Engineering (Cloud Computing)</h4>
+                        <div class="institution">MIT ADT University, Pune</div>
+                        <div class="duration">CGPA: 8.46 (8+ Consistently) | 5 Semesters Completed | Expected 2027</div>
+                    </div>
+                    <div class="education-item">
+                        <h4>HSC (12th)</h4>
+                        <div class="institution">Swami Vivekananda Jr. College, Washim</div>
+                        <div class="duration">84.17% | 2022</div>
+                    </div>
+                    <div class="education-item">
+                        <h4>SSC (10th)</h4>
+                        <div class="institution">Shanitiniketan English School, Washim</div>
+                        <div class="duration">94.20% | 2020</div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="resume-section">
+                    <h3><i class="fas fa-language"></i> LANGUAGES</h3>
+                    <ul class="languages-list">
+                        <li>Marathi (Native)</li>
+                        <li>Hindi (Professional)</li>
+                        <li>English (Professional Proficiency)</li>
+                    </ul>
+                </div>
+
+                <!-- Download Button -->
+                <div class="resume-cta">
+                    <a href="resume/Chaitanya_Gote_Resume.pdf" class="download-btn" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:chaitanyagote5006@gmail.com">chaitanyagote5006@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/Chai-X-Compute" target="_blank" rel="noopener noreferrer">github.com/Chai-X-Compute</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/chaitanya-gote-37a944294" target="_blank" rel="noopener noreferrer">linkedin.com/in/chaitanya-gote</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Pune, Maharashtra, India</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send me a message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <span id="btn-text">Send Message</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            <div class="loading-spinner" id="btn-spinner" style="display: none;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 12a9 9 0 11-6.219-8.56"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="form-status" class="form-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3>Message Sent Successfully!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Thank you for contacting me. Your message has been sent successfully. I'll get back to you soon.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="error-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                </div>
+                <h3>Message Failed to Send</h3>
+            </div>
+            <div class="modal-body">
+                <p id="error-message">Sorry, there was an error sending your message. Please try again later.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2026</span> Chaitanya Gote. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/project-details.js" defer></script>
+    <script src="js/certifications-modal.js" defer></script>
+    <script src="js/gallery.js" defer></script>
+    
+    <!-- Dynamic Footer Year -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = currentYear;
+            }
+        });
+    </script>
+<!-- Lightbox for Gallery -->
+<div id="lightbox" class="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <img src="" alt="" class="lightbox-image">
+        <div class="lightbox-controls">
+            <button id="prev-btn" class="lightbox-nav" aria-label="Previous image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button id="next-btn" class="lightbox-nav" aria-label="Next image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+    </div>
+</div>
+
+</body>
+</html>

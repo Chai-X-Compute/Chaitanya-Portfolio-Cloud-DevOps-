@@ -1,0 +1,434 @@
+/* Certifications Section */
+#certifications .certifications-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.certification-item {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.certification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.certification-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.certification-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.certification-item:hover .certification-image img {
+    transform: scale(1.05);
+}
+
+.certification-preview {
+    padding: 1.5rem;
+}
+
+.certification-preview h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.certification-preview .issuer {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.view-cert {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.view-cert i {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Certification Modal */
+.certification-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.certification-modal.active {
+    display: block;
+    opacity: 1;
+}
+
+.certification-modal-content {
+    position: relative;
+    background: var(--bg-color);
+    max-width: 1000px;
+    width: 90%;
+    margin: 4rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-cert-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: var(--text-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s ease;
+}
+
+.close-cert-modal:hover {
+    color: var(--primary-color);
+}
+
+.certification-modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.certification-gallery {
+    position: relative;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.main-certificate {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.main-cert-img {
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.main-cert-img:hover {
+    transform: scale(1.02);
+}
+
+.thumbnail-gallery {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f0f0f0;
+}
+
+.thumbnail-gallery::-webkit-scrollbar {
+    height: 6px;
+}
+
+.thumbnail-gallery::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+
+.thumbnail-gallery::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.thumbnail-item {
+    flex: 0 0 auto;
+    width: 80px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.thumbnail-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.thumbnail-item.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.certification-details {
+    padding: 2rem;
+}
+
+.certification-details h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.cert-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.cert-description {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.cert-description h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.cert-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.cert-action-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.cert-action-btn i {
+    margin-right: 0.5rem;
+}
+
+.cert-action-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.view-cert-btn {
+    background: #2c3e50;
+}
+
+.view-cert-btn:hover {
+    background: #1a252f;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-lightbox:hover {
+    color: var(--primary-color);
+}
+
+.lightbox-navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.lightbox-caption {
+    color: white;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .certification-modal-body {
+        flex-direction: row;
+    }
+    
+    .certification-gallery {
+        flex: 1;
+        border-right: 1px solid #eee;
+        border-bottom: none;
+    }
+    
+    .certification-details {
+        flex: 1;
+        max-width: 400px;
+    }
+    
+    .main-cert-img {
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 767px) {
+    .certification-modal-content {
+        width: 95%;
+        margin: 2rem auto;
+    }
+    
+    .certification-details h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cert-actions {
+        flex-direction: column;
+    }
+    
+    .cert-action-btn {
+        justify-content: center;
+    }
+}
+
+/* Animation for modal content */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.certification-modal-content {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Loading state for images */
+.certification-image.loading {
+    background: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.certification-image.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    100% {
+        left: 100%;
+    }
+}
