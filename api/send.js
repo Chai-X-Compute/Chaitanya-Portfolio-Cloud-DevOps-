@@ -1,15 +1,7 @@
-const express = require('express');
 const nodemailer = require('nodemailer');
 const rateLimit = require('express-rate-limit');
 const validator = require('validator');
-const cors = require('cors');
 require('dotenv').config();
-
-const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
 
 // Rate limiting
 const contactLimiter = rateLimit({
@@ -28,9 +20,19 @@ const sanitizeInput = (input) => {
 };
 
 // Contact form endpoint
-app.post('/api/send', contactLimiter, async (req, res) => {
+module.exports = async (req, res) => {
   try {
+    // Only allow POST requests
+    if (req.method !== 'POST') {
+      return res.status(405).json({
+        success: false,
+        message: 'Method not allowed.'
+      });
+    }
+
     const { name, email, subject, message } = req.body;
+
+    console.log('Request received:', { name, email, subject, message: message?.substring(0, 50) + '...' });
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
@@ -54,13 +56,22 @@ app.post('/api/send', contactLimiter, async (req, res) => {
     const sanitizedSubject = sanitizeInput(subject);
     const sanitizedMessage = sanitizeInput(message);
 
-    // Create transporter
+    console.log('Environment check:', {
+      emailUser: process.env.EMAIL_USER ? 'SET' : 'NOT SET',
+      emailPass: process.env.EMAIL_PASS ? 'SET' : 'NOT SET',
+      emailUserLength: process.env.EMAIL_USER?.length || 0,
+      emailPassLength: process.env.EMAIL_PASS?.length || 0
+    });
+
+    // Create transporter with more detailed config
     const transporter = nodemailer.createTransporter({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-      }
+      },
+      debug: true, // Enable debug logging
+      logger: true // Enable logging
     });
 
     // Email options
@@ -93,8 +104,9 @@ app.post('/api/send', contactLimiter, async (req, res) => {
       `
     };
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    // Send email with detailed error handling
+    const result = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', result.messageId);
 
     res.json({ 
       success: true, 
@@ -102,12 +114,17 @@ app.post('/api/send', contactLimiter, async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Detailed error sending email:', {
+      message: error.message,
+      code: error.code,
+      command: error.command,
+      responseCode: error.responseCode,
+      response: error.response
+    });
+    
     res.status(500).json({ 
       success: false, 
-      message: 'Failed to send message. Please try again later.' 
+      message: `Failed to send message: ${error.message}` 
     });
   }
-});
-
-module.exports = app;
+};
