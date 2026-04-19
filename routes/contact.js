@@ -4,33 +4,10 @@ const validator = require('validator');
 
 const router = express.Router();
 
-// Create Nodemailer transporter with proper configuration
-const createTransporter = () => {
-    console.log('Creating transporter with config:', {
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER ? process.env.EMAIL_USER.substring(0, 10) + '***' : 'NOT SET',
-            pass: process.env.EMAIL_PASS ? '***SET***' : 'NOT SET'
-        }
-    });
-
-    return nodemailer.createTransporter({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
-};
-
-// POST /contact - Send email
+// POST /api/contact - Send email
 router.post('/', async (req, res) => {
-    console.log('=== CONTACT REQUEST START ===');
+    console.log('=== CONTACT REQUEST ===');
     console.log('Request body:', req.body);
-    console.log('Request headers:', req.headers);
     
     try {
         // Check if body exists
@@ -74,12 +51,11 @@ router.post('/', async (req, res) => {
 
         // Check environment variables
         console.log('Environment check:');
-        console.log('EMAIL_USER set:', !!process.env.EMAIL_USER);
-        console.log('EMAIL_PASS set:', !!process.env.EMAIL_PASS);
-        console.log('NODE_ENV:', process.env.NODE_ENV);
+        console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'SET' : 'NOT SET');
+        console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'SET' : 'NOT SET');
         
         if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.error('Email credentials not properly configured!');
+            console.error('Email credentials not configured!');
             return res.status(500).json({
                 success: false,
                 message: 'Server configuration error. Email credentials missing.'
@@ -92,16 +68,22 @@ router.post('/', async (req, res) => {
         const sanitizedSubject = validator.escape(subject.trim());
         const sanitizedMessage = validator.escape(message.trim());
 
+        // Create simple transporter
         console.log('Creating email transporter...');
-        const transporter = createTransporter();
+        const transporter = nodemailer.createTransporter({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
 
-        // Verify transporter configuration
-        console.log('Verifying email configuration...');
+        // Verify transporter
         try {
             await transporter.verify();
             console.log('Email configuration verified successfully');
         } catch (verifyError) {
-            console.error('Email verification failed:', verifyError);
+            console.error('Email verification failed:', verifyError.message);
             return res.status(500).json({
                 success: false,
                 message: 'Email configuration verification failed.'
@@ -163,6 +145,7 @@ router.post('/', async (req, res) => {
             `
         };
 
+        // Send email
         console.log('Sending email...');
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent successfully:', info.messageId);
@@ -174,27 +157,18 @@ router.post('/', async (req, res) => {
 
     } catch (error) {
         console.error('=== CONTACT FORM ERROR ===');
-        console.error('Error type:', error.constructor.name);
-        console.error('Error message:', error.message);
-        console.error('Error code:', error.code);
-        console.error('Error stack:', error.stack);
+        console.error('Error:', error.message);
+        console.error('Code:', error.code);
         
         let errorMessage = 'Failed to send message. Please try again later.';
-        let statusCode = 500;
         
         if (error.code === 'EAUTH') {
-            errorMessage = 'Email authentication failed. Please check Gmail app password.';
-            statusCode = 500;
+            errorMessage = 'Email authentication failed. Check Gmail app password.';
         } else if (error.code === 'ECONNECTION') {
-            errorMessage = 'Connection failed. Please check internet connection.';
-            statusCode = 500;
-        } else if (error.code === 'EENVELOPE') {
-            errorMessage = 'Invalid email address configuration.';
-            statusCode = 500;
+            errorMessage = 'Connection failed. Check internet connection.';
         }
 
-        console.log('Sending error response:', { success: false, message: errorMessage });
-        res.status(statusCode).json({
+        res.status(500).json({
             success: false,
             message: errorMessage
         });
