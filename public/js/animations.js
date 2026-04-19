@@ -255,31 +255,52 @@ function initCustomCursor() {
 function initSkillBars() {
     const skillCategories = document.querySelectorAll('.skill-category');
     
+    console.log('Found skill categories:', skillCategories.length);
+    
     // Force initial width to 0% with inline styles for all skill bars
     const allSkillBars = document.querySelectorAll('.skill-level');
-    allSkillBars.forEach((bar) => {
+    console.log('Found all skill bars:', allSkillBars.length);
+    
+    allSkillBars.forEach((bar, index) => {
+        const level = bar.getAttribute('data-level');
+        console.log(`Skill bar ${index}: ${level}%`);
+        
         // Force inline styles to override any CSS
-        bar.setAttribute('style', 'width: 0% !important; transition: none;');
+        bar.setAttribute('style', 'width: 0% !important; transition: none; position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #38bdf8, #3b82f6); display: block; visibility: visible; opacity: 1;');
         
         // Also set via style property for redundancy
         bar.style.width = '0%';
         bar.style.transition = 'none';
+        bar.style.position = 'absolute';
+        bar.style.left = '0';
+        bar.style.top = '0';
+        bar.style.height = '100%';
+        bar.style.display = 'block';
+        bar.style.visibility = 'visible';
+        bar.style.opacity = '1';
+        bar.style.background = 'linear-gradient(90deg, #38bdf8, #3b82f6)';
     });
     
     // Create intersection observer for skill categories
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            console.log('Category intersecting:', entry.isIntersecting);
             if (entry.isIntersecting) {
                 const category = entry.target;
                 const skillBars = category.querySelectorAll('.skill-level');
                 const categoryIndex = Array.from(skillCategories).indexOf(category);
+                
+                console.log(`Animating category ${categoryIndex} with ${skillBars.length} skill bars`);
                 
                 // Animate each skill bar in the category with staggered delay
                 skillBars.forEach((skillBar, barIndex) => {
                     const level = parseInt(skillBar.getAttribute('data-level'));
                     const delay = 200 + (categoryIndex * 300) + (barIndex * 100);
                     
+                    console.log(`Will animate skill ${barIndex} to ${level}% after ${delay}ms`);
+                    
                     setTimeout(() => {
+                        console.log(`Starting animation for skill ${barIndex} to ${level}%`);
                         animateSkillBar(skillBar, level);
                     }, delay);
                 });
@@ -304,6 +325,15 @@ function animateSkillBar(element, targetLevel) {
     let currentLevel = 0;
     const increment = targetLevel / 50; // Divide animation into 50 steps
     const interval = 30; // 30ms per step for smooth animation
+    
+    // Ensure proper positioning and visibility
+    element.style.position = 'absolute';
+    element.style.left = '0';
+    element.style.top = '0';
+    element.style.height = '100%';
+    element.style.display = 'block';
+    element.style.visibility = 'visible';
+    element.style.opacity = '1';
     
     // Set transition for smooth animation
     element.style.transition = 'width 30ms linear';

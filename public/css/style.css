@@ -490,9 +490,11 @@ a:hover {
 
 .skill-bar {
   height: 8px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
   overflow: hidden;
+  position: relative;
 }
 
 .skill-level {
@@ -501,7 +503,11 @@ a:hover {
   border-radius: var(--radius-full);
   width: 0% !important;
   max-width: 100%;
-  transition: width 1.5s ease-out;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 30ms linear;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
 }
 
 /* Projects Section */
