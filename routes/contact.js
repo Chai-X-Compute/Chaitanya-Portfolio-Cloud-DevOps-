@@ -15,6 +15,7 @@ const contactLimiter = rateLimit({
     },
     standardHeaders: true,
     legacyHeaders: false,
+    skipSuccessfulRequests: false,
 });
 
 // Create Nodemailer transporter
