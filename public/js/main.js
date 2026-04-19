@@ -194,13 +194,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
 
             // Client-side validation
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-            
-            // Trim all inputs
-            Object.keys(data).forEach(key => {
-                data[key] = data[key].trim();
-            });
+            const data = {
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value.trim(),
+                message: document.getElementById('message').value.trim()
+            };
 
             // Basic validation
             if (!data.name || !data.email || !data.subject || !data.message) {
@@ -250,7 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
+                console.log('Response ok:', response.ok);
+
+                // Check if response is ok before parsing JSON
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error response:', errorText);
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
+                }
 
                 const result = await response.json();
                 console.log('Response data:', result);
