@@ -251,6 +251,48 @@ function initCustomCursor() {
     animate();
 }
 
+// Initialize skill bars animation
+function initSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-level');
+    
+    // Set initial width to 0
+    skillBars.forEach(bar => {
+        bar.style.width = '0%';
+    });
+    
+    // Create intersection observer for skill bars
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillLevel = entry.target;
+                const level = skillLevel.getAttribute('data-level');
+                
+                // Animate skill bar
+                setTimeout(() => {
+                    skillLevel.style.transition = 'width 1.5s ease-out';
+                    skillLevel.style.width = level + '%';
+                }, 200);
+                
+                // Stop observing after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5, // Trigger when 50% visible
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // Start observing all skill bars
+    skillBars.forEach(bar => {
+        observer.observe(bar);
+    });
+}
+
+// Initialize skill bars when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initSkillBars();
+});
+
 // Only initialize custom cursor on desktop
 if (window.innerWidth > 1024) {
     initCustomCursor();
