@@ -248,31 +248,15 @@ function initCustomCursor() {
     });
 }
 
-// Clean Skills Animation System - Progressive Fill Only
+// Clean Skills Animation System
 function initSkillBars() {
     const skillCategories = document.querySelectorAll('.skill-category');
+    const allSkillFills = document.querySelectorAll('.skill-fill');
     
-    // Initialize all skill bars with blue gradient
-    const allSkillBars = document.querySelectorAll('.skill-level');
-    
-    // Set initial state - bars at 0%
-    allSkillBars.forEach((bar) => {
-        const level = bar.getAttribute('data-level');
-        
-        // Force initial state with blue gradient
-        bar.style.width = '0%';
-        bar.style.transition = 'none';
-        bar.style.position = 'absolute';
-        bar.style.left = '0';
-        bar.style.top = '0';
-        bar.style.height = '100%';
-        bar.style.display = 'block';
-        bar.style.visibility = 'visible';
-        bar.style.opacity = '1';
-        bar.style.zIndex = '1';
-        bar.style.background = 'linear-gradient(90deg, #38bdf8, #0ea5e9, #0284c7)';
-        bar.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.6)';
-        bar.style.borderRadius = '50px';
+    // Initialize all skill bars to 0% width
+    allSkillFills.forEach((fill) => {
+        fill.style.width = '0%';
+        fill.style.transition = 'none';
     });
     
     // Create intersection observer for animation
@@ -280,18 +264,16 @@ function initSkillBars() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const category = entry.target;
-                const skillBars = category.querySelectorAll('.skill-level');
+                const skillFills = category.querySelectorAll('.skill-fill');
                 const categoryIndex = Array.from(skillCategories).indexOf(category);
                 
-                // Animate each skill bar with staggered timing
-                skillBars.forEach((skillBar, barIndex) => {
-                    const level = parseInt(skillBar.getAttribute('data-level'));
-                    
-                    // Timing: category delay + individual skill delay
-                    const delay = 300 + (categoryIndex * 400) + (barIndex * 150);
+                // Animate each skill bar with staggered delay
+                skillFills.forEach((skillFill, barIndex) => {
+                    const level = parseInt(skillFill.getAttribute('data-level'));
+                    const delay = 200 + (categoryIndex * 300) + (barIndex * 100);
                     
                     setTimeout(() => {
-                        animateSkillBar(skillBar, level);
+                        animateSkillBar(skillFill, level);
                     }, delay);
                 });
                 
@@ -300,8 +282,8 @@ function initSkillBars() {
             }
         });
     }, {
-        threshold: 0.3, // Trigger when 30% visible
-        rootMargin: '0px 0px -100px 0px' // Start slightly earlier
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
     });
     
     // Start observing all skill categories
@@ -310,42 +292,15 @@ function initSkillBars() {
     });
 }
 
-// Progressive skill bar animation - blue gradient fill only
+// Animate skill bar from 0% to target level
 function animateSkillBar(element, targetLevel) {
-    let currentLevel = 0;
-    const duration = 2000; // 2 seconds for smooth animation
-    const steps = 60; // 60 steps for smooth 60fps animation
-    const increment = targetLevel / steps;
-    const interval = duration / steps;
+    // Enable smooth transition
+    element.style.transition = 'width 2s cubic-bezier(0.4, 0, 0.2, 1)';
     
-    // Ensure blue gradient is applied
-    element.style.background = 'linear-gradient(90deg, #38bdf8, #0ea5e9, #0284c7)';
-    element.style.boxShadow = '0 0 25px rgba(56, 189, 248, 0.8)';
-    
-    // Animate the bar progressively
-    const animation = setInterval(() => {
-        currentLevel += increment;
-        
-        if (currentLevel >= targetLevel) {
-            currentLevel = targetLevel;
-            clearInterval(animation);
-            
-            // Final polish - slight overshoot and settle
-            element.style.width = (targetLevel + 2) + '%';
-            element.style.boxShadow = '0 0 30px rgba(56, 189, 248, 1)';
-            
-            setTimeout(() => {
-                element.style.width = targetLevel + '%';
-                element.style.boxShadow = '0 0 20px rgba(56, 189, 248, 0.6)';
-            }, 200);
-        } else {
-            element.style.width = currentLevel + '%';
-            
-            // Progressive glow effect as bar fills
-            const glowIntensity = (currentLevel / targetLevel) * 0.8;
-            element.style.boxShadow = `0 0 ${15 + glowIntensity * 15}px rgba(56, 189, 248, ${0.4 + glowIntensity * 0.4})`;
-        }
-    }, interval);
+    // Animate to target level
+    setTimeout(() => {
+        element.style.width = targetLevel + '%';
+    }, 50);
 }
 
 // Initialize skill bars when DOM is loaded

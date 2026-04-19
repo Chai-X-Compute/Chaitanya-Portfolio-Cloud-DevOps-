@@ -430,56 +430,35 @@ a:hover {
   gap: 0.5rem;
 }
 
-/* Skills Section */
+/* Clean Skills Section */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
+  gap: 2rem;
   margin-top: 2rem;
 }
 
 .skill-category {
-  background: linear-gradient(135deg, var(--surface-color), var(--surface-color-light));
-  border-radius: var(--radius-xl);
+  background: var(--surface-color);
+  border-radius: var(--radius-lg);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: all var(--transition-normal);
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-category::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  opacity: 0;
-  transition: opacity var(--transition-normal);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .skill-category:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  border-color: var(--primary-color);
-}
-
-.skill-category:hover::before {
-  opacity: 1;
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
 }
 
 .skill-category h3 {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
   color: var(--text-primary);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-weight: 600;
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
 }
 
 .skill-category h3::after {
@@ -487,11 +466,10 @@ a:hover {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  width: 50px;
+  height: 3px;
+  background: var(--primary-color);
   border-radius: var(--radius-full);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 .skills-list {
@@ -501,65 +479,37 @@ a:hover {
 }
 
 .skill-item {
-  position: relative;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all var(--transition-normal);
-}
-
-.skill-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(56, 189, 248, 0.3);
-  transform: translateX(5px);
-}
-
-.skill-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .skill-name {
-  font-size: 1rem;
-  color: var(--text-primary);
-  font-weight: 500;
-  flex: 1;
-}
-
-.skill-bar-container {
-  position: relative;
+  display: block;
   margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 .skill-bar {
-  height: 12px;
+  height: 10px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.skill-level {
+.skill-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-color-dark), #0284c7) !important;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
   border-radius: var(--radius-full);
-  width: 0% !important;
-  max-width: 100%;
+  width: 0%;
   position: absolute;
   left: 0;
   top: 0;
-  transition: width 30ms linear;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-  z-index: 1;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 /* Responsive Skills Section */
 @media (max-width: 1024px) {
@@ -587,6 +537,11 @@ a:hover {
   
   .skill-bar {
     height: 10px;
+  }
+  
+  .skill-label {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
   }
 }
 
@@ -629,6 +584,11 @@ a:hover {
   .skill-bar {
     height: 8px;
   }
+  
+  .skill-label {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -659,6 +619,11 @@ a:hover {
   
   .skill-bar {
     height: 6px;
+  }
+  
+  .skill-label {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.4rem;
   }
 }
 
