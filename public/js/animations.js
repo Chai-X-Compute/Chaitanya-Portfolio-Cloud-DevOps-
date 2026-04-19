@@ -253,30 +253,36 @@ function initCustomCursor() {
 
 // Initialize skill bars animation
 function initSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-level');
+    const skillCategories = document.querySelectorAll('.skill-category');
     
-    // Force initial width to 0% with inline styles
-    skillBars.forEach((bar) => {
+    // Force initial width to 0% with inline styles for all skill bars
+    const allSkillBars = document.querySelectorAll('.skill-level');
+    allSkillBars.forEach((bar) => {
         // Force inline styles to override any CSS
-        bar.setAttribute('style', 'width: 0% !important; transition: width 1.5s ease-out;');
+        bar.setAttribute('style', 'width: 0% !important; transition: none;');
         
         // Also set via style property for redundancy
         bar.style.width = '0%';
-        bar.style.transition = 'width 1.5s ease-out';
+        bar.style.transition = 'none';
     });
     
-    // Create intersection observer for skill bars
+    // Create intersection observer for skill categories
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const skillLevel = entry.target;
-                const level = skillLevel.getAttribute('data-level');
+                const category = entry.target;
+                const skillBars = category.querySelectorAll('.skill-level');
+                const categoryIndex = Array.from(skillCategories).indexOf(category);
                 
-                // Animate skill bar with inline styles
-                setTimeout(() => {
-                    skillLevel.style.width = level + '%';
-                    skillLevel.setAttribute('style', `width: ${level}% !important; transition: width 1.5s ease-out;`);
-                }, 200);
+                // Animate each skill bar in the category with staggered delay
+                skillBars.forEach((skillBar, barIndex) => {
+                    const level = parseInt(skillBar.getAttribute('data-level'));
+                    const delay = 200 + (categoryIndex * 300) + (barIndex * 100);
+                    
+                    setTimeout(() => {
+                        animateSkillBar(skillBar, level);
+                    }, delay);
+                });
                 
                 // Stop observing after animation
                 observer.unobserve(entry.target);
@@ -287,10 +293,60 @@ function initSkillBars() {
         rootMargin: '0px 0px -50px 0px'
     });
     
-    // Start observing all skill bars
-    skillBars.forEach(bar => {
-        observer.observe(bar);
+    // Start observing all skill categories
+    skillCategories.forEach(category => {
+        observer.observe(category);
     });
+}
+
+// Progressive skill bar animation function
+function animateSkillBar(element, targetLevel) {
+    let currentLevel = 0;
+    const increment = targetLevel / 50; // Divide animation into 50 steps
+    const interval = 30; // 30ms per step for smooth animation
+    
+    // Create percentage label
+    const skillItem = element.closest('.skill-item');
+    const skillName = skillItem.querySelector('.skill-name');
+    
+    // Add percentage display to skill name
+    const originalText = skillName.textContent;
+    skillName.innerHTML = `${originalText} <span class="skill-percentage" style="opacity: 0; transition: opacity 0.3s;">0%</span>`;
+    const percentageSpan = skillName.querySelector('.skill-percentage');
+    
+    // Set transition for smooth animation
+    element.style.transition = 'width 30ms linear';
+    
+    const animation = setInterval(() => {
+        currentLevel += increment;
+        const displayLevel = Math.round(currentLevel);
+        
+        // Update percentage display
+        percentageSpan.textContent = displayLevel + '%';
+        percentageSpan.style.opacity = '1';
+        
+        if (currentLevel >= targetLevel) {
+            currentLevel = targetLevel; // Ensure we don't exceed target
+            clearInterval(animation);
+            
+            // Final update
+            percentageSpan.textContent = targetLevel + '%';
+            
+            // Add a subtle pulse effect when reaching target
+            element.style.transition = 'width 0.3s ease-out';
+            element.style.width = (currentLevel + 2) + '%';
+            
+            setTimeout(() => {
+                element.style.width = currentLevel + '%';
+                // Fade out percentage after a moment
+                setTimeout(() => {
+                    percentageSpan.style.opacity = '0.6';
+                }, 1000);
+            }, 150);
+        } else {
+            element.style.width = currentLevel + '%';
+        }
+    }, interval);
 }
 
 // Initialize skill bars when DOM is loaded
