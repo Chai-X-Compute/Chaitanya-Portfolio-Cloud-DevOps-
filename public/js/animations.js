@@ -265,8 +265,8 @@ function initSkillBars() {
         const level = bar.getAttribute('data-level');
         console.log(`Skill bar ${index}: ${level}%`);
         
-        // Force inline styles to override any CSS
-        bar.setAttribute('style', 'width: 0% !important; transition: none; position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #38bdf8, #3b82f6); display: block; visibility: visible; opacity: 1;');
+        // Force inline styles to override any CSS (but let CSS handle colors)
+        bar.setAttribute('style', 'width: 0% !important; transition: none; position: absolute; left: 0; top: 0; height: 100%; display: block; visibility: visible; opacity: 1; z-index: 1;');
         
         // Also set via style property for redundancy
         bar.style.width = '0%';
@@ -278,7 +278,8 @@ function initSkillBars() {
         bar.style.display = 'block';
         bar.style.visibility = 'visible';
         bar.style.opacity = '1';
-        bar.style.background = 'linear-gradient(90deg, #38bdf8, #3b82f6)';
+        bar.style.zIndex = '1';
+        // Don't set background - let CSS handle theme colors
     });
     
     // Create intersection observer for skill categories
@@ -334,8 +335,9 @@ function animateSkillBar(element, targetLevel) {
     element.style.display = 'block';
     element.style.visibility = 'visible';
     element.style.opacity = '1';
+    element.style.zIndex = '1';
     
-    // Set transition for smooth animation
+    // Set transition for smooth animation (don't override background)
     element.style.transition = 'width 30ms linear';
     
     const animation = setInterval(() => {
