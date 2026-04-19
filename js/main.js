@@ -232,13 +232,29 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.style.display = 'none';
 
             try {
-                // Use absolute URL for local testing (Live Server or file://), otherwise relative URL
+                // Use absolute URL for local testing, otherwise relative URL
                 const isLocal = window.location.hostname === '127.0.0.1' || 
                                 window.location.hostname === 'localhost' || 
                                 window.location.protocol === 'file:';
                 
-                // Assuming backend runs on port 3001 locally as per your .env
-                const endpoint = isLocal ? 'http://localhost:3001/send' : '/send';
+                // Try different ports for local development
+                let endpoint = '/send'; // Default relative URL
+                
+                if (isLocal) {
+                    // Try to detect the current port and use the same port for API
+                    const currentPort = window.location.port || '3004';
+                    endpoint = `http://localhost:${currentPort}/send`;
+                    
+                    // If current port doesn't work, fallback to common ports
+                    if (currentPort !== '3004') {
+                        endpoint = 'http://localhost:3004/send';
+                    }
+                }
+                
+                console.log('Using endpoint:', endpoint);
+
+                // Send to backend
+                console.log('Sending data:', data);
 
                 // Send to backend
                 const response = await fetch(endpoint, {
@@ -249,7 +265,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: JSON.stringify(data)
                 });
 
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+
                 const result = await response.json();
+                console.log('Response data:', result);
 
                 if (result.success) {
                     // Success - show success modal
@@ -263,7 +283,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 // Network error
                 console.error('Form submission error:', error);
-                document.getElementById('error-message').textContent = 'Network error. Please check your connection and try again.';
+                console.error('Error details:', error.message);
+                document.getElementById('error-message').textContent = `Network error: ${error.message}. Please check your connection and try again.`;
                 showModal('error-modal');
             } finally {
                 // Reset loading state
