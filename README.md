@@ -1,129 +1,81 @@
 # Chaitanya Gote - Professional Portfolio
 
-A modern, responsive portfolio website showcasing my skills, projects, and professional experience as a Cloud & DevOps Engineer and Full-Stack Web Developer.
+A modern, responsive portfolio website with Node.js backend and contact form functionality.
 
-## [Live Demo](https://chai-x-compute.github.io/) | [Portfolio Link](https://chai-x-compute.github.io/)
+## [Live Demo](https://your-render-url.onrender.com)
 
 ---
 
-## About This Project
+## Features
 
-This portfolio website is a comprehensive demonstration of my technical expertise in web development, cloud technologies, and DevOps practices. Built with a focus on performance, accessibility, and user experience, it serves as both a professional showcase and a technical proof-of-concept.
-
-### Key Features
-
-- **Responsive Design**: Mobile-first approach with seamless cross-device compatibility
-- **Modern UI/UX**: Clean, professional interface with smooth animations and transitions
-- **Interactive Project Gallery**: Dynamic modal system with image galleries for project showcases
-- **Contact Form**: Fully functional contact system with email integration via Nodemailer
-- **Dark/Light Theme**: Theme toggle for enhanced user preference
-- **Performance Optimized**: Lazy loading, optimized assets, and efficient code structure
-- **SEO Friendly**: Semantic HTML5 structure with proper meta tags
-- **Accessibility**: WCAG compliant with ARIA labels and keyboard navigation
+- **Responsive Design**: Works perfectly on all devices
+- **Dark/Light Theme**: Toggle between themes
+- **Contact Form**: Functional email sending via Nodemailer
+- **Project Gallery**: Interactive project modals
+- **Professional Resume**: Complete skills and experience section
+- **Modern Animations**: Smooth scroll effects and transitions
 
 ---
 
 ## Tech Stack
 
-### Frontend Technologies
-- **HTML5**: Semantic markup with accessibility features
-- **CSS3**: Modern styling with animations and responsive design
-- **JavaScript (ES6+)**: Interactive features and dynamic content management
-- **Font Awesome**: Professional icons and UI elements
+### Frontend
+- **HTML5** & **CSS3** with modern features
+- **JavaScript ES6+** with modern practices
+- **Font Awesome** for icons
+- **Google Fonts** for typography
 
-### Backend & Infrastructure
-- **Node.js**: Runtime environment for server-side functionality
-- **Express.js**: Web framework for API and contact form handling
-- **Nodemailer**: Email service integration for contact form submissions
-- **Gmail SMTP**: Secure email delivery with OAuth2 authentication
+### Backend
+- **Node.js** + **Express.js**
+- **Nodemailer** for email functionality
+- **Express Rate Limit** for API protection
+- **Validator** for input sanitization
 
-### Development Tools
-- **Git**: Version control and collaboration
-- **GitHub Pages**: Static site hosting
-- **VS Code**: Development environment with integrated tooling
-- **Chrome DevTools**: Performance optimization and debugging
+### Deployment
+- **Render** for hosting
+- **Environment Variables** for security
 
 ---
 
 ## Project Structure
 
 ```
-portfolio-website/
+project-root/
 |
-|-- css/
-|   |-- style.css              # Main stylesheet
-|   |-- animations.css         # Animation definitions
-|   |-- theme.css              # Dark/light theme styles
-|   |-- modal.css              # Modal and popup styles
-|   |-- gallery.css            # Image gallery styles
-|   |-- contact.css            # Contact form styling
-|   |-- certifications.css     # Certifications section styles
+|--- public/                    # Frontend assets
+|    |
+|    |-- index.html            # Main HTML file
+|    |-- css/                  # Stylesheets
+|    |-- js/                   # JavaScript files
+|    |-- images/               # Project images
+|    |-- certifications/       # Certificate images
+|    |-- resume/               # Resume files
 |
-|-- js/
-|   |-- main.js                # Core functionality and navigation
-|   |-- animations.js          # Scroll animations and effects
-|   |-- theme.js               # Theme toggle functionality
-|   |-- project-details.js     # Project modal management
-|   |-- certifications-modal.js # Certifications modal system
-|   |-- gallery.js             # Image gallery and lightbox
+|--- routes/                    # Backend routes
+|    |-- contact.js            # Contact form handler
 |
-|-- images/
-|   |-- project1/              # KrushiMitra project screenshots
-|   |-- project2/              # File Storage project screenshots
-|   |-- project3/              # QuickWeather project screenshots
-|   |-- project4/              # Event Management project screenshots
-|   |-- profile/               # Profile and avatar images
-|   |-- certifications/        # Certificate images
-|
-|-- resume/
-|   |-- Chaitanya_Gote_Resume.pdf # Professional resume document
-|
-|-- index.html                 # Main HTML file
-|-- server.js                  # Express server for contact form
-|-- package.json               # Node.js dependencies
-|-- .env                       # Environment variables (gitignored)
-`-- README.md                  # This file
+|--- server.js                  # Main server file
+|--- package.json               # Dependencies and scripts
+|--- .env.example              # Environment variables template
+|--- .gitignore                 # Git ignore file
+|--- README.md                  # This file
 ```
 
 ---
 
-## Featured Projects
-
-### 1. KrushiMitra - Agricultural Resource Platform
-A comprehensive cloud-based platform connecting farmers with resources, marketplace features, and community engagement. Built with Python Flask, AWS services, and modern web technologies.
-
-**Tech Stack**: Python Flask | MySQL + SQLAlchemy | AWS RDS | AWS S3 | Firebase Auth | Razorpay API | Tailwind CSS | Vanilla JS
-
-### 2. Cloud-Based Secure File Storage System
-Full-stack cloud-backed file management application with role-based access control, AWS S3 integration, and comprehensive authentication system.
-
-**Tech Stack**: Python Flask | SQLAlchemy ORM | Flask-Login | MySQL/SQLite | AWS S3 | Bootstrap | Linux (Ubuntu)
-
-### 3. QuickWeather Web App
-Responsive weather dashboard with real-time data, 5-day forecasts, and dark/light mode functionality.
-
-**Tech Stack**: HTML5 | CSS3 | JavaScript | OpenWeather API
-
-### 4. Event Management System
-Comprehensive event management platform with creation tools, attendee tracking, and admin dashboard.
-
-**Tech Stack**: HTML5 | CSS3 | JavaScript
-
----
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
-- Node.js (v14.0 or higher)
-- npm or yarn package manager
-- Gmail account with app password for email functionality
+- Node.js (v14 or higher)
+- npm or yarn
+- Gmail account with App Password
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Chai-X-Compute/portfolio-website.git
-   cd portfolio-website
+   git clone https://github.com/Chai-X-Compute/Chaitanya-Portfolio-Cloud-DevOps-.git
+   cd Chaitanya-Portfolio-Cloud-DevOps-
    ```
 
 2. **Install dependencies**
@@ -133,150 +85,213 @@ Comprehensive event management platform with creation tools, attendee tracking, 
 
 3. **Set up environment variables**
    ```bash
-   # Create .env file
-   touch .env
+   cp .env.example .env
    ```
    
-   Add the following to your `.env` file:
+   Edit `.env` and add your credentials:
    ```env
-   EMAIL_USER=your-email@gmail.com
+   EMAIL_USER=your-gmail-address@gmail.com
    EMAIL_PASS=your-gmail-app-password
-   PORT=3000
+   PORT=3001
    ```
 
-4. **Start the development server**
+4. **Get Gmail App Password**
+   - Go to [Google Account Settings](https://myaccount.google.com/)
+   - Enable 2-Step Verification
+   - Go to App Passwords
+   - Generate new app password
+   - Use this password in `EMAIL_PASS`
+
+5. **Start the server**
    ```bash
-   # For development with auto-reload
+   # Development
    npm run dev
    
-   # Or for production
+   # Production
    npm start
    ```
 
-5. **Open in browser**
-   - Frontend: Open `index.html` directly in your browser
-   - Backend API: `http://localhost:3000`
+6. **Open your browser**
+   ```
+   http://localhost:3001
+   ```
 
-### Gmail Setup for Contact Form
+---
 
-1. Enable 2-factor authentication on your Gmail account
-2. Generate an App Password:
-   - Go to Google Account settings
-   - Security > 2-Step Verification > App passwords
-   - Generate a new app password for "Mail"
-3. Use the app password in your `.env` file
+## Render Deployment
+
+### 1. Push to GitHub
+```bash
+git add .
+git commit -m "Ready for Render deployment"
+git push origin main
+```
+
+### 2. Deploy on Render
+
+1. **Create Render Account**
+   - Sign up at [render.com](https://render.com)
+
+2. **Create New Web Service**
+   - Click "New" > "Web Service"
+   - Connect your GitHub repository
+   - Select the repository
+
+3. **Configure Deployment**
+   ```
+   Name: chaitanya-portfolio
+   Environment: Node
+   Build Command: npm install
+   Start Command: npm start
+   ```
+
+4. **Add Environment Variables**
+   In Render Dashboard > Service > Environment:
+   ```
+   EMAIL_USER=your-gmail-address@gmail.com
+   EMAIL_PASS=your-gmail-app-password
+   NODE_ENV=production
+   ```
+
+5. **Deploy**
+   - Click "Create Web Service"
+   - Wait for deployment (2-3 minutes)
+   - Your site will be live at `your-service-name.onrender.com`
 
 ---
 
 ## API Endpoints
 
 ### Contact Form
-- **POST** `/send`
-  - Handles contact form submissions
-  - Validates input data
-  - Sends email via Nodemailer
-  - Rate limited to prevent abuse
+```
+POST /api/contact
+Content-Type: application/json
 
-**Request Body:**
-```json
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "subject": "Project Inquiry",
-  "message": "I'm interested in your work..."
+  "subject": "Hello",
+  "message": "Your message here (min 10 characters)"
 }
 ```
 
-**Response:**
-```json
-{
-  "success": true,
-  "message": "Message sent successfully! \ud83d\ude80"
-}
+### Health Check
+```
+GET /api/health
+```
+
+### API Info
+```
+GET /api
 ```
 
 ---
 
-## Performance & Optimization
+## Contact Form Features
 
-### Implemented Optimizations
-- **Lazy Loading**: Images load as needed for faster initial page load
-- **Minified Assets**: CSS and JavaScript optimized for production
-- **Semantic HTML**: Improved SEO and accessibility
-- **Responsive Images**: Optimized for different screen sizes
-- **Caching Strategy**: Browser caching for static assets
-- **CDN Ready**: Structured for easy CDN deployment
+- **Input Validation**: Email format, required fields, message length
+- **Rate Limiting**: 5 requests per 15 minutes per IP
+- **Input Sanitization**: XSS protection
+- **Error Handling**: Detailed error messages
+- **Email Templates**: Professional HTML emails
+- **Loading States**: Visual feedback during submission
 
-### Performance Metrics
-- **Lighthouse Score**: 90+ across all categories
-- **Page Load Time**: <2 seconds on 3G networks
-- **First Contentful Paint**: <1.5 seconds
-- **Accessibility**: WCAG 2.1 AA compliant
+---
+
+## Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `EMAIL_USER` | Your Gmail address | Yes |
+| `EMAIL_PASS` | Gmail App Password | Yes |
+| `PORT` | Server port (default: 3001) | No |
+| `NODE_ENV` | Environment (development/production) | No |
+
+---
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Start production server |
+| `npm run dev` | Start development server with nodemon |
+| `npm test` | Run tests (placeholder) |
 
 ---
 
 ## Security Features
 
-- **CSRF Protection**: Cross-site request forgery prevention
-- **Input Validation**: Server-side and client-side validation
-- **Rate Limiting**: API endpoint protection
-- **Secure Headers**: HTTP security headers implementation
-- **Environment Variables**: Sensitive data protection
-- **XSS Prevention**: Cross-site scripting mitigation
+- **Rate Limiting**: Prevents spam and abuse
+- **Input Validation**: Sanitizes all user inputs
+- **Environment Variables**: Sensitive data not in code
+- **CORS**: Configured for secure cross-origin requests
+- **Error Handling**: No sensitive information leaked
 
 ---
 
-## Deployment
+## Performance
 
-### Static Site Deployment (GitHub Pages)
-1. Push to `main` branch
-2. Enable GitHub Pages in repository settings
-3. Select source as `main` branch
-4. Site deployed automatically
+- **Static File Serving**: Optimized CSS, JS, and images
+- **Compression**: Built-in Express compression
+- **Caching**: Proper cache headers for static assets
+- **Minification**: Ready for production optimization
 
-### Full Stack Deployment
-1. **Frontend**: Deploy static files to any static hosting service
-2. **Backend**: Deploy Node.js server to cloud platform (AWS, Heroku, etc.)
-3. **Environment**: Configure production environment variables
-4. **Domain**: Configure custom domain and SSL certificate
+---
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Email Not Sending**
+   - Check Gmail App Password
+   - Verify environment variables
+   - Check console logs for errors
+
+2. **Deployment Fails**
+   - Ensure all dependencies in package.json
+   - Check environment variables in Render
+   - Verify build and start commands
+
+3. **Images Not Loading**
+   - Check file paths in public directory
+   - Verify case sensitivity
+   - Ensure images are in correct folders
+
+### Debug Mode
+
+Add to your `.env`:
+```env
+DEBUG=*
+```
 
 ---
 
 ## Contributing
 
-This is a personal portfolio project. While I'm not accepting external contributions, I'm open to:
-- Feedback and suggestions
-- Bug reports and issue reporting
-- Networking and collaboration opportunities
-
-Feel free to reach out through the contact form or LinkedIn!
-
----
-
-## Connect With Me
-
-- **Portfolio**: [Chai-X-Compute.github.io](https://chai-x-compute.github.io/)
-- **GitHub**: [@Chai-X-Compute](https://github.com/Chai-X-Compute)
-- **LinkedIn**: [chaitanya-gote](https://www.linkedin.com/in/chaitanya-gote)
-- **Email**: chaitanyagote5006@gmail.com
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ---
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## Connect With Me
+
+- **Portfolio**: [Live Site](https://your-render-url.onrender.com)
+- **GitHub**: [@Chai-X-Compute](https://github.com/Chai-X-Compute)
+- **LinkedIn**: [chaitanya-gote](https://linkedin.com/in/chaitanya-gote)
 
 ---
 
 ## Acknowledgments
 
-- **Font Awesome**: For professional icons and UI elements
-- **Google Fonts**: For typography and web fonts
-- **OpenWeatherMap**: For weather API in QuickWeather project
-- **Firebase**: For authentication services in KrushiMitra
-- **AWS**: For cloud infrastructure and hosting
-
----
-
-*Built with passion and dedication by Chaitanya Gote*  
-*Cloud & DevOps Engineer | Full-Stack Web Developer*
+- Thanks to all open-source contributors
+- Built with modern web technologies
+- Deployed on Render for best performance

@@ -232,24 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.style.display = 'none';
 
             try {
-                // Use absolute URL for local testing, otherwise relative URL
-                const isLocal = window.location.hostname === '127.0.0.1' || 
-                                window.location.hostname === 'localhost' || 
-                                window.location.protocol === 'file:';
-                
-                // Try different ports for local development
-                let endpoint = '/send'; // Default relative URL
-                
-                if (isLocal) {
-                    // Try to detect the current port and use the same port for API
-                    const currentPort = window.location.port || '3004';
-                    endpoint = `http://localhost:${currentPort}/send`;
-                    
-                    // If current port doesn't work, fallback to common ports
-                    if (currentPort !== '3004') {
-                        endpoint = 'http://localhost:3004/send';
-                    }
-                }
+                // Use API endpoint for contact form
+                const endpoint = '/api/contact';
                 
                 console.log('Using endpoint:', endpoint);
 
