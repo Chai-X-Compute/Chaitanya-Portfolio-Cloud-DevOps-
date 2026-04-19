@@ -342,9 +342,12 @@ document.addEventListener('DOMContentLoaded', function() {
             card.className = 'certification-item';
             card.setAttribute('data-cert', cert.id);
             
+            console.log('Creating certification card for:', cert.title, 'with thumbnail:', cert.thumbnail);
+            
             card.innerHTML = `
                 <div class="certification-image">
-                    <img src="${cert.thumbnail}" alt="${cert.title}" class="cert-thumbnail">
+                    <img src="${cert.thumbnail}" alt="${cert.title}" class="cert-thumbnail" 
+                         onerror="this.onerror=null; this.src='images/certifications/default-cert.png'; console.log('Image failed to load:', '${cert.thumbnail}');">
                 </div>
                 <div class="certification-preview">
                     <h3>${cert.title}</h3>
