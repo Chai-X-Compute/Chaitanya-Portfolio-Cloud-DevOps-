@@ -265,8 +265,8 @@ function initSkillBars() {
         const level = bar.getAttribute('data-level');
         console.log(`Skill bar ${index}: ${level}%`);
         
-        // Force inline styles to override any CSS (but let CSS handle colors)
-        bar.setAttribute('style', 'width: 0% !important; transition: none; position: absolute; left: 0; top: 0; height: 100%; display: block; visibility: visible; opacity: 1; z-index: 1;');
+        // Force inline styles to override any CSS with blue background
+        bar.setAttribute('style', 'width: 0% !important; transition: none; position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #38bdf8, #0ea5e9, #0284c7) !important; display: block !important; visibility: visible !important; opacity: 1 !important; z-index: 1; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5) !important;');
         
         // Also set via style property for redundancy
         bar.style.width = '0%';
@@ -275,11 +275,12 @@ function initSkillBars() {
         bar.style.left = '0';
         bar.style.top = '0';
         bar.style.height = '100%';
+        bar.style.background = 'linear-gradient(90deg, #38bdf8, #0ea5e9, #0284c7)';
         bar.style.display = 'block';
         bar.style.visibility = 'visible';
         bar.style.opacity = '1';
         bar.style.zIndex = '1';
-        // Don't set background - let CSS handle theme colors
+        bar.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.5)';
     });
     
     // Create intersection observer for skill categories
@@ -327,7 +328,7 @@ function animateSkillBar(element, targetLevel) {
     const increment = targetLevel / 50; // Divide animation into 50 steps
     const interval = 30; // 30ms per step for smooth animation
     
-    // Ensure proper positioning and visibility
+    // Ensure proper positioning and visibility with blue background
     element.style.position = 'absolute';
     element.style.left = '0';
     element.style.top = '0';
@@ -336,8 +337,10 @@ function animateSkillBar(element, targetLevel) {
     element.style.visibility = 'visible';
     element.style.opacity = '1';
     element.style.zIndex = '1';
+    element.style.background = 'linear-gradient(90deg, #38bdf8, #0ea5e9, #0284c7)';
+    element.style.boxShadow = '0 0 15px rgba(56, 189, 248, 0.5)';
     
-    // Set transition for smooth animation (don't override background)
+    // Set transition for smooth animation
     element.style.transition = 'width 30ms linear';
     
     const animation = setInterval(() => {
